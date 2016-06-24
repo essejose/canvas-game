@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>01</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+		
+
+        <canvas id="canvas">
+        	 Please  upgrade your browser  to improve your experience.
+        </canvas>
+       
+      
+        <script src="js/fillRect.js"></script>
+        <script src="js/app.js"></script>
+
+        <script>
+        	 APP.init();
+ 
+
+        	 function obj (x,y){
+        	 	this.x= x;
+        	 	this.y= y;
+        	 	this.largura= 100;
+        	 	this.altura= 100;
+        	 	this.color= 'blue';
+        	 	this.line= 1;
+        	 	this.lineColor= 'blue';
+
+        	 	this.clear = function (){
+        	 		clearRetangle.call(APP,this)
+        	 	}
+
+        	 	this.render = function(){
+        	 		retangulos.call(APP, this);
+        	 	}
+
+        	 }
+ 
+
+        	
+        	 var desenhos = [
+        	 	quadro_1 = new obj(200,100),
+        		quadro_2 = new obj(200,300),
+        		quadro_3 = new obj(300,200)
+        	 ]
+
+
+        	for (var i = 0; i < desenhos.length; i++) {
+        		desenhos[i].render();
+        	}
+
+ 
+        	// retangulos.call(APP, quadro_1);
+        	// retangulos.call(APP, quadro_2);
+        	
+        	//lines.call(APP, new line());
+
+
+        	 // function line(){
+        	 // 	this.lineX =[593,593,536,547,553,561,570,580,593,604,618,633,649,664,683,702,716,730,743,753,762,766,766,766,757,745,730,710,689,661,630,602,572,542,510,483,458,437,415,395,379,368,359,352,345,342,339,338,338,340,345,349,353,355,356,411,404,402,401,400,400,399,398,398,397,397,396,395,395,395,395,395,395,397,398,399,400,400] ;
+        	 // 	this.lineY =[133,133,174,164,160,156,152,148,145,143,142,141,141,141,143,147,152,157,165,173,186,198,213,229,247,269,288,303,317,325,330,332,332,332,332,328,325,321,315,308,299,291,283,273,265,256,247,237,229,222,215,209,204,202,199,232,237,238,239,240,241,243,245,247,249,251,254,257,259,260,262,264,266,267,268,269,269,270];
+        	 // 	this.lineWidth = 4;
+        	 // 	this.color = 'red';
+
+        	 // }
+
+
+        	
+
+        	 
+        </script>
+    </body>
+</html>
