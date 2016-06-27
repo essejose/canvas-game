@@ -10,14 +10,18 @@
 var retangulos = function(obj) {
     "use strict";
 
-    this.ctx.fillStyle = obj.color
-    this.ctx.lineWidth = obj.line;
-    this.ctx.strokeStyle = obj.lineColor;
+    this.ctx.fillStyle = obj.color;
     this.ctx.fillRect(obj.x,
         obj.y,
         obj.largura,
         obj.altura);
 
+    this.ctx.lineWidth = obj.line;
+    this.ctx.strokeStyle = obj.lineColor;     
+    this.ctx.strokeRect(obj.x,
+        obj.y,
+        obj.largura,
+        obj.altura);
 }
 
 
