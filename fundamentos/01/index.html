@@ -24,65 +24,38 @@
         </canvas>
        
       
-        <script src="js/fillRect.js"></script>
+        <!-- <script src="js/fillRect.js"></script> -->
         <script src="js/fillLine.js"></script>
+        <script src="js/mouseDown.js"></script>
         <script src="js/app.js"></script>
 
         <script>
-        	 APP.init();
+        	APP.init();
+            APP.Desenho.create(200,200);
+            APP.Desenho.create(200,300);
+            APP.Desenho.create(200,500);
+
+
+            //working
+            var  start = null;
  
 
-        	 function obj (x,y){
-        	 	this.x= x;
-        	 	this.y= y;
-        	 	this.largura= 100;
-        	 	this.altura= 100;
-        	 	this.color= 'blue';
-        	 	this.line=3;
-        	 	this.lineColor= 'red';
+            function step(timestamp) {
+              if (!start) start = timestamp;
+              var progress = timestamp - start;
+            console.log(Math.min(progress/10, 20));
+             APP.Desenho.quadros[1].move(400, Math.min(progress/4, 200))
+             APP.Desenho.quadros[0].move(100, Math.min(progress/4, 100))
+               
+              if (progress < 2000) {
+                window.requestAnimationFrame(step);
+              }
+            }
 
-        	 	this.clear = function (){
-        	 		clearRetangle.call(APP,this)
-        	 	}
+            step(0);
 
-        	 	this.render = function(){
-        	 		retangulos.call(APP, this);
-        	 	}
-
-        	 }
- 
-
-        	
-        	 var desenhos = [
-        	 	quadro_1 = new obj(200,100),
-        		quadro_2 = new obj(200,300),
-        		quadro_3 = new obj(300,200)
-        	 ]
-
-
-        	for (var i = 0; i < desenhos.length; i++) {
-        		desenhos[i].render();
-        	}
-
- 
-        	// retangulos.call(APP, quadro_1);
-        	// retangulos.call(APP, quadro_2);
-        	
-        	//lines.call(APP, new line());
-
-
-        	 // function line(){
-        	 // 	this.lineX =[593,593,536,547,553,561,570,580,593,604,618,633,649,664,683,702,716,730,743,753,762,766,766,766,757,745,730,710,689,661,630,602,572,542,510,483,458,437,415,395,379,368,359,352,345,342,339,338,338,340,345,349,353,355,356,411,404,402,401,400,400,399,398,398,397,397,396,395,395,395,395,395,395,397,398,399,400,400] ;
-        	 // 	this.lineY =[133,133,174,164,160,156,152,148,145,143,142,141,141,141,143,147,152,157,165,173,186,198,213,229,247,269,288,303,317,325,330,332,332,332,332,328,325,321,315,308,299,291,283,273,265,256,247,237,229,222,215,209,204,202,199,232,237,238,239,240,241,243,245,247,249,251,254,257,259,260,262,264,266,267,268,269,269,270];
-        	 // 	this.lineWidth = 4;
-        	 // 	this.color = 'red';
-
-        	 // }
-
-
-        	
-
-        	 
+             
+               
         </script>
     </body>
 </html>

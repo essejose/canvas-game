@@ -7,9 +7,10 @@
  * @return {undefined}   Não retorna nada
  */
 
-var retangulos = function(obj) {
-    "use strict";
+ function retangulos (obj) {
+ 
 
+    this.ctx.beginPath();
     this.ctx.fillStyle = obj.color;
     this.ctx.fillRect(obj.x,
         obj.y,
@@ -22,11 +23,23 @@ var retangulos = function(obj) {
         obj.y,
         obj.largura,
         obj.altura);
+    this.ctx.closePath();
 }
 
+ function clearRetangle (obj){
+ 
+    // compensa o  stroke criado
+    var lineOffset;
 
-var clearRetangle = function (obj){
-	"use strict";
-	this.ctx.clearRect(obj.x,obj.y, obj.largura,  obj.altura)
+    if (obj.line > 0 ) {
+        lineOffset = obj.line + Math.round(obj.line/2);
+    }else{
+        obj.line = 1;
+        lineOffset = 2;
+
+    } 
+
+    this.ctx.clearRect(obj.x - obj.line , obj.y  - obj.line , obj.largura + lineOffset,  obj.altura + lineOffset );
+ 	 
 }
 
