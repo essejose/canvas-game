@@ -79,9 +79,7 @@ APP.Desenho = (function(APP) {
 		this.move = function(x, y) {
 			this.clear();
 			this.x = x;
-			this.y = y;
-
-			
+			this.y = y;  
 			this.render();
 		};
 

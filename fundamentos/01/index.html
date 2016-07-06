@@ -42,9 +42,8 @@
 
             function step(timestamp) {
               if (!start) start = timestamp;
-              var progress = timestamp - start;
-            console.log(Math.min(progress/10, 20));
-             APP.Desenho.quadros[1].move(400, Math.min(progress/4, 200))
+              var progress = timestamp - start; 
+             APP.Desenho.quadros[1].move(600, Math.min(progress/4, 600)) 
              APP.Desenho.quadros[0].move(100, Math.min(progress/4, 100))
                
               if (progress < 2000) {
