@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>01</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+		
+
+        <canvas id="canvas">
+        	 Please  upgrade your browser  to improve your experience.
+        </canvas>
+       
+      
+      
+
+        <script>
+        	 var canvas = document.getElementById('canvas');
+             var c = canvas.getContext('2d');
+             var fpsArray = [];
+             var fpsCount = 0;
+             var stopAt = 10;
+             var fps = 0;
+             var startTime = 0;
+             var date = new Date();
+             startTime = Math.round(date.getTime() / 1000);
+             c.font = '20px _sans';
+             draw(startTime);
+
+             function draw(timeStamp) {
+                 var date = new Date();
+                 ts = Math.round(date.getTime() / 1000);
+                 if (timeStamp !== ts) {
+                     fps = fpsCount;
+                     fpsCount = 0;
+                     fpsArray.push(fps);
+                 } else {
+                     fpsCount++;
+                 }
+                 c.fillStyle = '#000000';
+                 c.fillRect(0, 0, canvas.width, canvas.height);
+                 c.fillStyle = '#FFFFFF';
+                 c.fillText("TS: " + timeStamp, 10, 20);
+                 c.fillText("FPS: " + fps, 10, 40);
+                 if (timeStamp <= (startTime + stopAt)) {
+                     setTimeout(function() {
+                         draw(ts);
+                     }, 1);
+
+                 } else {
+                     showResults(c, canvas);
+                 }
+             }
+
+             function showResults() {
+                 var mean = 0;
+                 var sum = 0;
+                 c.fillStyle = '#FFFFFF';
+                 c.fillRect(0, 0, canvas.width, canvas.height);
+                 // sort the samples
+                 for (var i = 0; i < fpsArray.length; i++) {
+                     for (var j = fpsArray.length - 1; j > i; j--) {
+                         if (fpsArray[j - 1] > fpsArray[j]) {
+                             fpsArray[j - 1] = fpsArray[j];
+                         }
+                     }
+                 }
+                 // discard the first value, which is usually very low
+                 fpsArray = fpsArray.slice(1, fpsArray.length);
+                 for (var i = 0; i < fpsArray.length; i++) {
+                     sum = sum + fpsArray[i];
+                 }
+                 mean = sum / fpsArray.length;
+                 c.fillStyle = '#000000';
+                 c.fillText("MIN: " + fpsArray[0], 10, 20);
+                 c.fillText("MAX: " + fpsArray[fpsArray.length - 1], 10, 40);
+                 c.fillText("MEAN: " + (Math.round(mean * 10) / 10), 10, 60);
+             }
+
+             
+               
+        </script>
+    </body>
+</html>
