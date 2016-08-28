@@ -34,6 +34,9 @@
             APP.Desenho.create(200,200);
             APP.Desenho.create(200,300);
             APP.Desenho.create(200,500);
+            APP.Desenho.create(500,500);
+            APP.Desenho.create(600,600);
+            APP.Desenho.create(300,200);
 
 
             //working
@@ -45,6 +48,8 @@
               var progress = timestamp - start; 
              APP.Desenho.quadros[1].move(600, Math.min(progress/4, 600)) 
              APP.Desenho.quadros[0].move(100, Math.min(progress/4, 100))
+             APP.Desenho.quadros[2].move(400, Math.min(progress/4, 300))
+             APP.Desenho.quadros[3].move(500, Math.min(progress/4, 300))
                
               if (progress < 2000) {
                 window.requestAnimationFrame(step);
